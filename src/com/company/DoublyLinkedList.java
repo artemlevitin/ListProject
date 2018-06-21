@@ -27,6 +27,41 @@ public class DoublyLinkedList{
         ++lenght;
     }
 
+    public void delNode(Node node){
+        if(node==null)
+            return;
+        else if(node.prev == null){
+            this.node = null;
+        }
+            else if(node.next==null) {
+               node.prev.next = null;
+               this.node = node.prev;
+            }
+               else{
+                    node.prev.next = node.next;
+                    node.next.prev = node.prev;
+                }
+        --lenght;
+    }
+
+    public Node find(int x){
+
+        Node cureNode = this.node;
+
+       for(int i = 0; i < lenght; ++i){
+           if(cureNode.x == x)
+               return cureNode;
+           cureNode = cureNode.prev;
+       }
+
+       return null;
+    }
+
+    public void remAll(){
+       while(this.node !=null){
+           delNode(this.node);
+       }
+    }
     public int getLenght() {
         return lenght;
     }
@@ -34,6 +69,7 @@ public class DoublyLinkedList{
     public void setLenght(int lenght) {
         this.lenght = lenght;
     }
+
 }
 
 class Node {
