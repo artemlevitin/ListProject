@@ -9,13 +9,21 @@ public class DoublyLinkedList{
         return node;
     }
 
-    private void addNode(int x) {
+    void add(int x) {
+
         if(this.node==null) {
-            node=new Node();
-            node.setX(x);
-            node.setPrev(null);
-            node.setNext(null);
+            this.node=new Node();
+            this.node.x = x;
         }
+
+        else if(this.node.next == null) {
+            Node node = new Node();
+            node.x = x;
+            node.prev = this.node;
+            this.node.next = node;
+            this.node = node;
+        }
+
         ++lenght;
     }
 
@@ -29,31 +37,11 @@ public class DoublyLinkedList{
 }
 
 class Node {
-    private int x;
-    private Node Prev;
-    private Node Next;
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public Node getPrev() {
-        return Prev;
-    }
-
-    public void setPrev(Node prev) {
-        Prev = prev;
-    }
-
-    public Node getNext() {
-        return Next;
-    }
-
-    public void setNext(Node next) {
-        Next = next;
-    }
-}
+        int x ;
+     Node prev;
+     Node next;
+     Node(){
+         prev=null;
+         next=null;
+     }
+   }
