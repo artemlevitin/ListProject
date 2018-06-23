@@ -1,13 +1,9 @@
 package com.company;
+import java.util.Iterator;
 
-public class DoublyLinkedList{
+public class DoublyLinkedList implements Iterable<Node>{
     private Node node = null;
     private int lenght=0;
-
-
-    public Node getNode() {
-        return node;
-    }
 
     void add(int x) {
 
@@ -70,6 +66,23 @@ public class DoublyLinkedList{
         this.lenght = lenght;
     }
 
+    @Override
+    public String toString() {
+
+        Node cureNode = this.node;
+        String outputStr ="";
+
+        for(int i = 0; i < lenght; ++i){
+            outputStr += cureNode.toString() +" ";
+            cureNode = cureNode.prev;
+        }
+
+        return outputStr;
+    }
+    @Override
+    public Iterator<Node> iterator() {
+        return this.iterator() ;
+    }
 }
 
 class Node {
@@ -80,4 +93,8 @@ class Node {
          prev=null;
          next=null;
      }
+    @Override
+    public String toString() {
+        return String(this.x + " ");
+    }
    }
